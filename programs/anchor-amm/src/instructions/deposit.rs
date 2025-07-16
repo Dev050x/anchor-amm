@@ -118,7 +118,7 @@ impl<'info> Deposit<'info>{
             authority:self.user.to_account_info()
         });
 
-        transfer(cpiContext,amount);
+        transfer(cpiContext,amount)?;
 
         Ok(())
     }
@@ -136,11 +136,11 @@ impl<'info> Deposit<'info>{
 
         let cpiContext = CpiContext::new_with_signer(self.token_program.to_account_info() , MintTo{
             mint:self.mint_lp.to_account_info(),
-            to:self.user.to_account_info(),
+            to:self.user_lp.to_account_info(),
             authority:self.config.to_account_info(),
         },signer_seeds);
 
-        mint_to(cpiContext, amount);
+        mint_to(cpiContext, amount)?;
         Ok(())
     }
 
