@@ -74,7 +74,10 @@ pub struct Deposit<'info>{
 
 
 impl<'info> Deposit<'info>{
-
+    //while working with amm you should always consider lp amount not token amount it will be hadled at client side
+    //amount: that much amount of lp token user wanted
+    //max_x: max that much amount of token x user wanted to deposit
+    //max_y: max that much amount of token y user wanted to deposit
     pub fn deposit(&mut self , amount: u64 , max_x:u64 , max_y:u64) -> Result<()> {
 
         require!(amount != 0 , AmmError::InvalidAmount);

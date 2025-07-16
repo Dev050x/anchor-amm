@@ -1,6 +1,9 @@
 pub mod initialize;
 pub mod deposit;
-mod deposit;
-mod swap;
+pub mod swap;
+pub mod withdraw;
 
 pub use initialize::*;
+pub use deposit::*;
+pub use swap::*;
+pub use withdraw::*;

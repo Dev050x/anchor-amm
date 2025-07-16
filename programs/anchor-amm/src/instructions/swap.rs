@@ -68,6 +68,9 @@ pub struct Swap<'info>{
 }
 
 impl<'info> Swap<'info>{
+    //is_x:true means want to swap token x to token y
+    //min: atleast that much amount of token y user wanted
+    //amount: amount of token x that user wanted to swap
     pub fn swap(&mut self , is_x:bool , min:u64 , amount:u64) -> Result<()> {
 
         require!(amount != 0 , AmmError::InvalidAmount);
