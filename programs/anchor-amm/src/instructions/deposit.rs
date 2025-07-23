@@ -101,6 +101,7 @@ impl<'info> Deposit<'info>{
 
         self.deposit_token(x, true);
         self.deposit_token(y, false);
+        msg!("Minting {} LP tokens", amount);
 
         self.mint_lp(amount);
 
@@ -133,7 +134,7 @@ impl<'info> Deposit<'info>{
             &self.config.seed.to_le_bytes(),
             &[self.config.config_bump],
         ];
-
+        msg!("Minting {} LP tokens", amount);
         let signer_seeds = &[&seeds[..]];
 
 
@@ -142,7 +143,7 @@ impl<'info> Deposit<'info>{
             to:self.user_lp.to_account_info(),
             authority:self.config.to_account_info(),
         },signer_seeds);
-
+        msg!("Minting {} LP tokens", amount);
         mint_to(cpiContext, amount)?;
         Ok(())
     }
